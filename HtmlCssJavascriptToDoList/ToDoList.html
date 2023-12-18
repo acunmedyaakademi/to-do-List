@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ToDo List</title>
+    <!--style etiketi, css kodları yazmamızı sağlar.-->
+    <!--border-radius özelliği, div'in kenarlarına eğim verir..-->
+    <!--box-shadow özelliği, gölgelik verir.-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #taskList {
+            list-style:none;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!--div etiketi bir genişlik değeri(width) vermediğimiz sürece satırı olduğu gibi kaplar ve yükseklik olarak da içerisinde bulunan öğelerin sahip olduğu yükseklik kadar bir yüksekliğe sahip olur.-->
+    <!--ID'ler sayfa boyunca bir kez tanımlanır. Yani bir etikete  örneğin id="test" niteliği yani test niteliğini başka bir etikete veremeyiz.-->
+    <!--class niteliği bir etiketi işaretleyip daha sonra css'te ve javascript'te bunu düzenleyebilmemizi sağlar.-->
+    <!--class niteliği birden fazla aynı isimde kullanılabilir. Bu da çok kullanışlı çünkü aynı stile sahip ancak birbirinden ufak farkları olan etiketlerde aynı class ismini yazıp tek bir css kodu ile aynı tasarımı aslında vermiş oluruz.-->
+    <div class="container">
+        <!--h1 etiketi bulunduğu kapsayıcının (div'in) başlığını ifade eder. -->
+        <h1>To-Do List</h1>
+        <!--placeholder etiketi input içerisine yazdığımız yazılardır.-->
+        <input type="text" id="taskInput" placeholder="Add a new task" />
+        <button onclick="addTask()">Add Task</button>
+        <!--ul etiketi, html'deki table etiketinin basic hali, sıralı bir liste oluşturulmasını sağlar.-->
+        <!--this elementi, bulunduğu elementin kendisini alır.-->
+        <!--innerHTML özelliği, bir alandaki metni html kodlarıyla almamıza ve bir alana html kodlarıyla beraber metin koymamıza yardımcı olur.-->
+        <!--appendChild özelliği, elementi ekler. örneğin burada ul içerisine li'leri eklemiş olduk.-->
+        <!--document kelimesi, aslında sayfanın kendisini ifade eder. -->
+        <ul id="taskList"></ul>
+    </div>
+    <!--jQuery örneği-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var taskInput = $("#taskInput");
+        })
+    </script>
+    <!--javascript örneği-->
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskList = document.getElementById("taskList");
+
+            if (taskInput.value !== '') {
+                var li = document.createElement("li");
+                li.innerHTML = taskInput.value + '<button onclick="removeTask(this)">Delete</button>';
+                taskList.appendChild(li);
+                taskInput.value = '';
+            }
+        }
+
+        function removeTask(button) {
+            //Fonksiyon, "Delete" düğmesine tıklanan button elemanını parametre olarak alır.
+            //parentNode, bir HTML öğesinin doğrudan üst(ebeveyn) öğesini temsil eder.
+            var li = button.parentNode; // Sil düğmesinin bulunduğu <li> elemanını alır.
+            var ul = li.parentNode; // <li> elemanının bulunduğu <ul> (liste) elemanını alır.
+            ul.removeChild(li); //<ul> içerisinden <li> elemanını kaldırır.
+        }
+    </script>
+</body>
+</html>
