@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hesaplama Uygulaması</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="num1">Sayı 1:</label>
+                <input type="number" id="num1" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="operator">İşlem:</label>
+                <select id="operator" class="form-control">
+                    <option value="+">Toplama</option>
+                    <option value="-">Çıkarma</option>
+                    <option value="*">Çarpma</option>
+                    <option value="/">Bölme</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="num2">Sayı 2:</label>
+                <input type="number" id="num2" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button onclick="hesapla()" class="btn btn-primary mt-4">Hesapla</button>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <p id="result" class="lead"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function hesapla() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var operator = document.getElementById("operator").value;
+            var result;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Geçersiz işlem";
+            }
+
+            document.getElementById("result").innerText = "Sonuç: " + result;
+        }
+    </script>
+</body>
+</html>

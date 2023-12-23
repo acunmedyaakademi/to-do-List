@@ -25,7 +25,11 @@
         }
 
         h1 {
-            text-align: center;
+            text-align: center
+                ;
+        }
+        div {
+            transform: translate(50px, 100px);
         }
 
         #taskList {
@@ -72,6 +76,8 @@
                 taskList.appendChild(li);
                 taskInput.value = '';
             }
+           
+           
         }
 
         function removeTask(button) {
@@ -81,6 +87,9 @@
             var ul = li.parentNode; // <li> elemanının bulunduğu <ul> (liste) elemanını alır.
             ul.removeChild(li); //<ul> içerisinden <li> elemanını kaldırır.
         }
+
+
+      
     </script>
 </body>
 </html>

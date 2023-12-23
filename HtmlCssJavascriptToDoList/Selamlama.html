@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Selamlama Uygulaması</title>
+</head>
+<body>
+    <div>
+        <label>Adınızı Giriniz:</label>
+        <input type="text" id="nameInput" />
+        <button onclick="selamVer()">Selam Ver</button>
+        <p id="greeting"></p>
+    </div>
+    <script>
+        function selamVer() {
+            var ad = document.getElementById("nameInput").value;
+            var selam = "Merhaba, " + ad + "!";
+            document.getElementById("greeting").innerHTML = selam;
+        }
+    </script>
+</body>
+</html>
